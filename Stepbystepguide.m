@@ -15,13 +15,13 @@ Adım 2: Veri Ön İşleme ve Filtre Tasarımı (`filter_design.m`)
 * Filtreleme işlemine geçmeden önce `erase` komutuyla metinlerin başındaki `"T="` ve `"H="` ifadelerini temizledim ve `str2double` ile verileri sayısal (`double`) dizilere dönüştürdüm.
 * İki sinyalin zaman ekseninde senkronize kalması için nem sütunundaki 16 eksik satırı hem nem hem de sıcaklık dizilerinden eşzamanlı olarak çıkardım.
 * Ardından sensör gürültüsünü bastırmak için üç farklı filtreleme tekniği uyguladım:
-1. **Moving Average (Hareketli Ortalama):** Ani sıçramaları yumuşatmak için 15 örneklik kayan pencere ortalaması kullandım.
-2. **Low-Pass Filter (Alçak Geçiren Filtre):** Yavaş değişen çevresel trendleri korurken yüksek frekanslı elektriksel gürültüyü süzdüm.
-3. **1D Kalman Filtresi:** Süreç gürültüsü ($Q$) ve ölçüm gürültüsü ($R$) kovaryans parametrelerini ayarlayarak gerçek zamanlı gömülü sistemlere uygun, gecikmesi düşük bir durum tahmini (state estimation) döngüsü oluşturdum.
+1. Moving Average (Hareketli Ortalama):Ani sıçramaları yumuşatmak için 15 örneklik kayan pencere ortalaması kullandım.
+2.Low-Pass Filter (Alçak Geçiren Filtre):Yavaş değişen çevresel trendleri korurken yüksek frekanslı elektriksel gürültüyü süzdüm.
+3. 1-D Kalman Filtresi:Süreç gürültüsü ($Q$) ve ölçüm gürültüsü ($R$) kovaryans parametrelerini ayarlayarak gerçek zamanlı gömülü sistemlere uygun, gecikmesi düşük bir durum tahmini (state estimation) döngüsü oluşturdum.
 
  Adım 3: Gürültü Azaltma Değerlendirmesi ve Görselleştirme (`snr_evaluation.m`)
 * Ham ölçümlerden filtrelenmiş sinyalleri çıkararak artık gürültü bileşenini elde ettim; her yöntem için gürültü standart sapmasını ve Sinyal-Gürültü Oranı (SNR - dB) iyileştirmesini hesapladım.
-* Son olarak zaman domeni takibini ve SNR iyileşmelerini göstermek amacıyla yüksek çözünürlüklü (300 DPI) karşılaştırma grafiklerini dışa aktardım.
+* Son olarak zaman domaini takibini ve SNR iyileşmelerini göstermek amacıyla yüksek çözünürlüklü (300 DPI) karşılaştırma grafiklerini dışa aktardım.
 
 ---
 
